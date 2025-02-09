@@ -12,12 +12,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'pip3 install -r requirements.txt'
+                bat 'pip3 install -r requirements.txt'
             }
         }
         stage('Test') {
             steps {
-                sh 'pytest tests/'
+                bat 'pytest tests/'
             }
         }
         stage('Deploy') {
@@ -25,7 +25,7 @@ pipeline {
                 expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
             }
             steps {
-                sh 'nohup python3 app.py &'
+                bat 'nohup python3 app.py &'
             }
         }
     }
