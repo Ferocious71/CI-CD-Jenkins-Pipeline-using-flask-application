@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Ferocious71/CI-CD-Pipeline-using-Jenkins-Gihub-Actions-and-flask-application.git'
+                git branch: 'main', 
+                    url: 'https://github.com/Ferocious71/CI-CD-Pipeline-using-Jenkins-Gihub-Actions-and-flask-application.git'
             }
         }
         stage('Build') {
