@@ -1,0 +1,38 @@
+name: Flask CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install Dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Tests
+        run: |
+          source venv/bin/activate
+          pytest  # Run your test cases
+
+      - name: Build Application
+        run: |
+          echo "Building Flask app..."
+          mkdir build
+          cp -r app build/
