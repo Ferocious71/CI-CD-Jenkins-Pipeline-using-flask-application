@@ -13,26 +13,8 @@ Push changes to trigger the pipeline.
 Triggering Deployment
 Staging: Push to staging branch.
 Production: Create a GitHub Release.
-5. Submission Checklist
-✅ GitHub Repository: Include the link to your repository with workflow files.
-✅ Updated README.md: Explains the pipeline steps and secret configurations.
-✅ Screenshots of Workflow Runs: Capture successful workflow execution from GitHub Actions tab.
 
-Let me know if you need further refinements! 🚀
-
-
-
-
-
-
-
-
-You said:
-I have forked a repository on github and  i have requirement.txt already in the main branch which has all the installations to install but do I need to add python to install or it is done through the yaml file
-ChatGPT said:
-You don’t need to explicitly install Python manually because the YAML workflow file already includes a step that sets up Python using the actions/setup-python GitHub Action. This step ensures that the required Python version is installed in the GitHub Actions runner.
-
-Key Section in Your YAML File
+Key Section in Your YAML File -
 yaml
 Copy
 Edit
