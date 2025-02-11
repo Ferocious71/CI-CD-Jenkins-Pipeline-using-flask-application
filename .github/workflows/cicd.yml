@@ -60,6 +60,11 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+      
+      - name: Set up SSH Key
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key.pem
+          chmod 400 private_key.pem  # Set strict permissions for security
 
       - name: Deploy to Staging Server
         env:
@@ -86,6 +91,10 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Set up SSH Key
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key.pem
+          chmod 400 private_key.pem  # Set strict permissions for security  
       - name: Deploy to Production Server
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
