@@ -35,4 +35,4 @@ jobs:
         run: |
           echo "Building Flask app..."
           mkdir build
-          cp -r app build/
+          cp app.py build/
