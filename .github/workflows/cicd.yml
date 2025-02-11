@@ -72,8 +72,6 @@ jobs:
           SERVER_IP: ${{ secrets.STAGING_SERVER_IP }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
         run: |
-          echo "$SSH_PRIVATE_KEY" > private_key.pem
-          chmod 600 private_key.pem
           ssh -o StrictHostKeyChecking=no -i private_key.pem $DEPLOY_USER@$SERVER_IP << 'EOF'
             cd /home/$DEPLOY_USER/staging-app
             git pull origin staging
