@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensure all files and history are fetched
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -30,11 +32,20 @@ jobs:
           source venv/bin/activate
           pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pytest
+
+      - name: Debug File Structure
+        run: ls -R  # Ensure 'tests/' directory exists
+
+      - name: Debug Pytest Collection
+        run: |
+          source venv/bin/activate
+          pytest --collect-only --verbose  # Verify test discovery
 
       - name: Run Tests
         run: |
           source venv/bin/activate
-          pytest tests/
+          python -m pytest tests/ --verbose  # Explicitly run tests
 
       - name: Build Application
         run: |
@@ -65,7 +76,7 @@ jobs:
             pip install -r requirements.txt
             sudo systemctl restart flask-app
             echo "✅ Staging deployment successful!"
-
+          EOF
 
   deploy_production:
     needs: build
@@ -90,3 +101,4 @@ jobs:
             pip install -r requirements.txt
             sudo systemctl restart flask-app
             echo "🚀 Production deployment successful!"
+          EOF
