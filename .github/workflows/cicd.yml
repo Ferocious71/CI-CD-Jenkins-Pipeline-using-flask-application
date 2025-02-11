@@ -29,7 +29,7 @@ jobs:
       - name: Run Tests
         run: |
           source venv/bin/activate
-          pytest  # Run your test cases
+          pytest tests/  # Run your test cases
 
       - name: Build Application
         run: |
