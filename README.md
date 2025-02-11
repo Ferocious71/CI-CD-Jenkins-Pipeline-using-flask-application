@@ -1,4 +1,4 @@
-GitHub Actions CI/CD Workflow
+# GitHub Actions CI/CD Workflow
 This repository contains a GitHub Actions-based CI/CD pipeline for deploying a Flask application. The workflow includes:
 
 Automated Testing: Runs on every push or pull request to main or staging.
