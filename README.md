@@ -40,8 +40,9 @@ This:
 Creates a virtual environment (venv).
 Activates the virtual environment.
 Installs all dependencies from requirements.txt.
-Conclusion
-No need to manually install Python. The YAML file ensures Python is available in the runner before installing dependencies. Just make sure requirements.txt includes all necessary packages for your Flask app. 🚀
+
+![image](https://github.com/user-attachments/assets/d6ce0b65-2bac-4d0c-8b47-7198abe0a267)
+
 
 
 # Jenkins CI/CD Workflow
