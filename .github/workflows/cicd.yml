@@ -60,11 +60,18 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      - name: Test SSH Connection
+        run: |
+          ssh -v -o StrictHostKeyChecking=no -i private_key.pem $DEPLOY_USER@$SERVER_IP "echo 'SSH Connection Successful'"
+      
       
       - name: Set up SSH Key
         run: |
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 400 private_key.pem  # Set strict permissions for security
+          ls -l private_key.pem  # Debugging: Check file permissions
+          cat private_key.pem | head -n 5  # Debugging: Verify the key is correctly stored
 
       - name: Deploy to Staging Server
         env:
